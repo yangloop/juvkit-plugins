@@ -1,0 +1,22 @@
+{
+  "id": "template-react-plugin",
+  "name": "React Plugin Template",
+  "version": "1.0.0",
+  "description": "React 框架插件开发模板 - 使用 @juvkit/plugin-sdk 开发",
+  "author": "Your Name",
+  "keywords": ["template", "react"],
+  "icon": "⚛️",
+  "runtime": "prebuilt",
+  "entryPoint": "dist/index.iife.js",
+  "style": "dist/style.css",
+  "window": {
+    "width": 600,
+    "height": 400
+  },
+  "permissions": [
+    "clipboard:read",
+    "clipboard:write",
+    "storage"
+  ],
+  "permissionLevel": "standard"
+}

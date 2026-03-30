@@ -1,0 +1,21 @@
+{
+  "id": "hello-plugin",
+  "name": "Hello Plugin",
+  "version": "1.0.0",
+  "description": "示例插件 - 展示新的独立窗口架构",
+  "author": "Juvkit Team",
+  "keywords": ["hello", "demo", "示例"],
+  "icon": "👋",
+  "style": "style.css",
+  "window": {
+    "width": 600,
+    "height": 400
+  },
+  "permissions": [
+    "clipboard:read",
+    "clipboard:write",
+    "storage",
+    "notification"
+  ],
+  "permissionLevel": "standard"
+}

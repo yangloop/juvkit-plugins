@@ -1,0 +1,21 @@
+{
+  "id": "template-plugin",
+  "name": "Plugin Template",
+  "version": "1.0.0",
+  "description": "新插件开发模板 - 复制此目录开始开发",
+  "author": "Your Name",
+  "keywords": ["template", "demo"],
+  "icon": "🔌",
+  "entryPoint": "index.js",
+  "style": "style.css",
+  "window": {
+    "width": 600,
+    "height": 400
+  },
+  "permissions": [
+    "clipboard:read",
+    "clipboard:write",
+    "storage"
+  ],
+  "permissionLevel": "standard"
+}

@@ -1,0 +1,48 @@
+<!-- 主布局 -->
+<div class="jk-container weather">
+  <div class="jk-header">
+    <h2 class="jk-title">🌤️ 天气查询</h2>
+  </div>
+
+  <div class="jk-search">
+    <input type="text" class="jk-input" id="wq-input" placeholder="输入城市名（如 Beijing, Shanghai, Tokyo）" />
+    <button class="jk-btn jk-btn-primary" id="wq-search">查询</button>
+  </div>
+
+  <div class="weather-section">
+    <div class="weather-section-title">⭐ 收藏城市</div>
+    <div id="wq-favorites" class="weather-tags"></div>
+  </div>
+
+  <div class="jk-body" id="wq-result">
+    <div class="jk-empty">输入城市名查询天气，点击 ☆ 收藏城市</div>
+  </div>
+
+  <div class="jk-footer">Powered by wttr.in</div>
+</div>
+
+<!-- 天气卡片模板 -->
+<template id="tpl-card">
+  <div class="weather-card">
+    <div class="weather-card-header">
+      <div>
+        <span class="weather-city"></span>
+        <span class="weather-country"></span>
+      </div>
+      <button class="weather-fav-btn" id="wq-fav">☆</button>
+    </div>
+    <div class="weather-main">
+      <div class="weather-temp"></div>
+      <div class="weather-desc"></div>
+    </div>
+    <div class="weather-details"></div>
+  </div>
+</template>
+
+<!-- 详情行模板 -->
+<template id="tpl-detail">
+  <div class="jk-detail">
+    <span class="jk-detail-label"></span>
+    <span class="jk-detail-value"></span>
+  </div>
+</template>
