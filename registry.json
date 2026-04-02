@@ -1,7 +1,11 @@
 {
   "version": 1,
-  "updated": "2026-03-29T00:00:00Z",
-  "categories": ["工具", "开发", "效率"],
+  "updated": "2026-04-02T16:16:10Z",
+  "categories": [
+    "工具",
+    "开发",
+    "效率"
+  ],
   "plugins": [
     {
       "id": "json-formatter",
@@ -9,10 +13,20 @@
       "version": "2.0.0",
       "description": "JSON 格式化、压缩、转义、去转义工具 - 基于 Monaco Editor",
       "author": "Juvkit",
-      "keywords": ["json", "格式化", "format", "压缩", "转义", "美化"],
+      "keywords": [
+        "json",
+        "格式化",
+        "format",
+        "压缩",
+        "转义",
+        "美化"
+      ],
       "icon": "clipboard",
       "category": "开发",
-      "permissions": ["clipboard:read", "clipboard:write"],
+      "permissions": [
+        "clipboard:read",
+        "clipboard:write"
+      ],
       "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/json-tool.zip",
       "repository": "https://github.com/yangloop/juvkit-plugins"
     },
@@ -22,11 +36,49 @@
       "version": "1.0.0",
       "description": "TOTP 双因素认证码生成器 - 兼容 Google Authenticator，支持二维码、导入导出",
       "author": "Juvkit",
-      "keywords": ["totp", "2fa", "authenticator", "otp", "双因素", "验证码"],
+      "keywords": [
+        "totp",
+        "2fa",
+        "authenticator",
+        "otp",
+        "双因素",
+        "验证码"
+      ],
       "icon": "shield",
       "category": "工具",
-      "permissions": ["clipboard:read", "clipboard:write", "storage", "notification"],
+      "permissions": [
+        "clipboard:read",
+        "clipboard:write",
+        "storage",
+        "notification"
+      ],
       "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/totp.zip",
+      "repository": "https://github.com/yangloop/juvkit-plugins"
+    },
+    {
+      "id": "rsa-keygen",
+      "name": "RSA 密钥工具",
+      "version": "1.0.0",
+      "description": "RSA 密钥对生成、加密解密测试工具 - 支持 2048/3072/4096 位密钥",
+      "author": "Juvkit",
+      "keywords": [
+        "rsa",
+        "密钥",
+        "key",
+        "加密",
+        "解密",
+        "encrypt",
+        "decrypt",
+        "crypto"
+      ],
+      "icon": "key",
+      "category": "开发",
+      "permissions": [
+        "clipboard:read",
+        "clipboard:write",
+        "window"
+      ],
+      "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/rsa-keygen.zip",
       "repository": "https://github.com/yangloop/juvkit-plugins"
     },
     {
@@ -35,10 +87,19 @@
       "version": "1.0.0",
       "description": "文本代码对比工具 - 支持并排/行内对比、差异导航、代码格式化",
       "author": "Juvkit",
-      "keywords": ["diff", "对比", "compare", "文本对比", "代码对比"],
+      "keywords": [
+        "diff",
+        "对比",
+        "compare",
+        "文本对比",
+        "代码对比"
+      ],
       "icon": "arrow-left-right",
       "category": "开发",
-      "permissions": ["clipboard:read", "clipboard:write"],
+      "permissions": [
+        "clipboard:read",
+        "clipboard:write"
+      ],
       "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/diff-tool.zip",
       "repository": "https://github.com/yangloop/juvkit-plugins"
     }

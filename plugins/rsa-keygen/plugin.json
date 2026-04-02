@@ -1,0 +1,23 @@
+{
+  "id": "rsa-keygen",
+  "name": "RSA 密钥工具",
+  "version": "1.0.0",
+  "description": "RSA 密钥对生成、加密解密测试工具 - 支持 2048/3072/4096 位密钥",
+  "author": "Juvkit",
+  "keywords": ["rsa", "密钥", "key", "加密", "解密", "encrypt", "decrypt", "crypto"],
+  "icon": "key",
+  "type": "external",
+  "runtime": "prebuilt",
+  "entryPoint": "dist/index.iife.js",
+  "style": "dist/style.css",
+  "window": {
+    "width": 720,
+    "height": 640
+  },
+  "permissions": [
+    "clipboard:read",
+    "clipboard:write",
+    "window"
+  ],
+  "permissionLevel": "standard"
+}
