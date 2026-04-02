@@ -1,11 +1,11 @@
 {
-  "id": "example_diff-tool",
+  "id": "diff-tool",
   "name": "文本对比",
   "version": "1.0.0",
   "description": "文本代码对比工具 - 基于 Monaco Editor，支持并排/行内对比、差异导航、代码格式化",
   "author": "Juvkit",
   "keywords": ["diff", "对比", "compare", "文本对比", "代码对比"],
-  "icon": "🔀",
+  "icon": "arrow-left-right",
   "type": "external",
   "runtime": "prebuilt",
   "entryPoint": "dist/index.iife.js",
@@ -16,7 +16,8 @@
   },
   "permissions": [
     "clipboard:read",
-    "clipboard:write"
+    "clipboard:write",
+    "window"
   ],
   "permissionLevel": "standard"
 }

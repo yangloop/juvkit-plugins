@@ -1,11 +1,11 @@
 {
-  "id": "example_json-formatter",
+  "id": "json-formatter",
   "name": "JSON 工具",
   "version": "2.0.0",
   "description": "JSON 格式化、压缩、转义、去转义工具 - 基于 Monaco Editor",
   "author": "Juvkit",
   "keywords": ["json", "格式化", "format", "压缩", "转义", "美化"],
-  "icon": "📋",
+  "icon": "clipboard",
   "type": "external",
   "runtime": "prebuilt",
   "entryPoint": "dist/index.iife.js",
@@ -16,7 +16,8 @@
   },
   "permissions": [
     "clipboard:read",
-    "clipboard:write"
+    "clipboard:write",
+    "window"
   ],
   "permissionLevel": "standard"
 }

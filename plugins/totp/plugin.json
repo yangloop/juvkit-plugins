@@ -1,0 +1,23 @@
+{
+  "id": "totp-authenticator",
+  "name": "TOTP Authenticator",
+  "version": "1.0.0",
+  "description": "TOTP 双因素认证码生成器 - 兼容 Google Authenticator，支持二维码、导入导出",
+  "author": "Juvkit",
+  "keywords": ["totp", "2fa", "authenticator", "otp", "双因素", "验证码"],
+  "icon": "shield",
+  "runtime": "prebuilt",
+  "entryPoint": "dist/index.iife.js",
+  "style": "dist/style.css",
+  "window": {
+    "width": 480,
+    "height": 640
+  },
+  "permissions": [
+    "clipboard:read",
+    "clipboard:write",
+    "storage",
+    "notification"
+  ],
+  "permissionLevel": "standard"
+}

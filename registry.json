@@ -1,118 +1,44 @@
 {
   "version": 1,
-  "updated": "2026-03-30T13:25:23Z",
-  "categories": [
-    "工具",
-    "开发",
-    "效率"
-  ],
+  "updated": "2026-03-29T00:00:00Z",
+  "categories": ["工具", "开发", "效率"],
   "plugins": [
     {
-      "id": "hello-plugin",
-      "name": "Hello World",
-      "version": "1.0.0",
-      "description": "入门示例插件，演示 Juvkit 插件基本结构",
-      "author": "Juvkit",
-      "keywords": [
-        "hello",
-        "demo",
-        "示例"
-      ],
-      "icon": "👋",
-      "category": "开发",
-      "permissions": [
-        "clipboard:read",
-        "clipboard:write"
-      ],
-      "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/hello-plugin.zip",
-      "repository": "https://github.com/yangloop/juvkit-plugins"
-    },
-    {
-      "id": "example_json-formatter",
+      "id": "json-formatter",
       "name": "JSON 工具",
       "version": "2.0.0",
       "description": "JSON 格式化、压缩、转义、去转义工具 - 基于 Monaco Editor",
       "author": "Juvkit",
-      "keywords": [
-        "json",
-        "格式化",
-        "format",
-        "压缩",
-        "转义",
-        "美化"
-      ],
-      "icon": "📋",
+      "keywords": ["json", "格式化", "format", "压缩", "转义", "美化"],
+      "icon": "clipboard",
       "category": "开发",
-      "permissions": [
-        "clipboard:read",
-        "clipboard:write"
-      ],
+      "permissions": ["clipboard:read", "clipboard:write"],
       "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/json-tool.zip",
       "repository": "https://github.com/yangloop/juvkit-plugins"
     },
     {
-      "id": "test-plugin",
-      "name": "测试插件",
+      "id": "totp-authenticator",
+      "name": "TOTP Authenticator",
       "version": "1.0.0",
-      "description": "用于测试 Webview 沙箱各项 API 的示例插件",
+      "description": "TOTP 双因素认证码生成器 - 兼容 Google Authenticator，支持二维码、导入导出",
       "author": "Juvkit",
-      "keywords": [
-        "test",
-        "demo",
-        "测试"
-      ],
-      "icon": "🧪",
-      "category": "开发",
-      "permissions": [
-        "clipboard:read",
-        "clipboard:write",
-        "storage",
-        "notification",
-        "dialog:confirm"
-      ],
-      "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/test-plugin.zip",
+      "keywords": ["totp", "2fa", "authenticator", "otp", "双因素", "验证码"],
+      "icon": "shield",
+      "category": "工具",
+      "permissions": ["clipboard:read", "clipboard:write", "storage", "notification"],
+      "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/totp-authenticator.zip",
       "repository": "https://github.com/yangloop/juvkit-plugins"
     },
     {
-      "id": "weather-plugin",
-      "name": "天气查询",
-      "version": "1.0.0",
-      "description": "查询当前城市天气，支持多日预报",
-      "author": "Juvkit",
-      "keywords": [
-        "天气",
-        "weather",
-        "预报"
-      ],
-      "icon": "🌤️",
-      "category": "生活",
-      "permissions": [
-        "http:fetch",
-        "storage",
-        "notification"
-      ],
-      "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/weather-plugin.zip",
-      "repository": "https://github.com/yangloop/juvkit-plugins"
-    },
-    {
-      "id": "example_diff-tool",
+      "id": "diff-tool",
       "name": "文本对比",
       "version": "1.0.0",
       "description": "文本代码对比工具 - 支持并排/行内对比、差异导航、代码格式化",
       "author": "Juvkit",
-      "keywords": [
-        "diff",
-        "对比",
-        "compare",
-        "文本对比",
-        "代码对比"
-      ],
-      "icon": "🔀",
+      "keywords": ["diff", "对比", "compare", "文本对比", "代码对比"],
+      "icon": "arrow-left-right",
       "category": "开发",
-      "permissions": [
-        "clipboard:read",
-        "clipboard:write"
-      ],
+      "permissions": ["clipboard:read", "clipboard:write"],
       "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/diff-tool.zip",
       "repository": "https://github.com/yangloop/juvkit-plugins"
     }
