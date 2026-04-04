@@ -30,39 +30,75 @@ export default function App({ api }: AppProps) {
 
     // 注册全局编辑处理器，供 Tauri 原生菜单 Cmd+A/C/V/X/Z 回调
     (window as any).__juvkitEditAction = (action: string) => {
-      if (editorRef.current && editorRef.current.hasTextFocus()) {
-        const editor = editorRef.current;
-        switch (action) {
-          case 'undo':
-            editor.trigger('menu', 'undo', null);
-            return;
-          case 'redo':
-            editor.trigger('menu', 'redo', null);
-            return;
-          case 'select_all':
-            editor.trigger('menu', 'editor.action.selectAll', null);
-            return;
-          case 'copy': {
-            const text = editor.getModel()?.getValueInRange(editor.getSelection()!);
-            if (text) (window as any).juvkit?.clipboard?.writeText(text);
-            return;
-          }
-          case 'cut': {
-            const sel = editor.getSelection()!;
-            const text = editor.getModel()?.getValueInRange(sel);
-            if (text) {
-              (window as any).juvkit?.clipboard?.writeText(text);
-              editor.executeEdits('menu', [{ range: sel, text: '' }]);
+      const ed = editorRef.current;
+      const inMonaco = ed && ed.getContainerDomNode().contains(document.activeElement);
+      if (ed && inMonaco) {
+        // 焦点在编辑器正文 → 使用 Monaco API
+        if (ed.hasTextFocus()) {
+          switch (action) {
+            case 'undo':
+              ed.trigger('menu', 'undo', null);
+              return;
+            case 'redo':
+              ed.trigger('menu', 'redo', null);
+              return;
+            case 'select_all':
+              ed.trigger('menu', 'editor.action.selectAll', null);
+              return;
+            case 'copy': {
+              const text = ed.getModel()?.getValueInRange(ed.getSelection()!);
+              if (text) (window as any).juvkit?.clipboard?.writeText(text);
+              return;
             }
-            return;
-          }
-          case 'paste': {
-            (window as any).juvkit?.clipboard?.readText()?.then((text: string) => {
-              if (text && editorRef.current) {
-                editorRef.current.executeEdits('menu', [{ range: editorRef.current.getSelection()!, text }]);
+            case 'cut': {
+              const sel = ed.getSelection()!;
+              const text = ed.getModel()?.getValueInRange(sel);
+              if (text) {
+                (window as any).juvkit?.clipboard?.writeText(text);
+                ed.executeEdits('menu', [{ range: sel, text: '' }]);
               }
-            });
-            return;
+              return;
+            }
+            case 'paste': {
+              (window as any).juvkit?.clipboard?.readText()?.then((text: string) => {
+                if (text && editorRef.current) {
+                  editorRef.current.executeEdits('menu', [{ range: editorRef.current.getSelection()!, text }]);
+                }
+              });
+              return;
+            }
+          }
+        }
+        // 焦点在 Monaco widget 内（如搜索框）→ 对活跃 input 元素执行操作
+        const active = document.activeElement as HTMLInputElement | HTMLTextAreaElement | null;
+        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+          switch (action) {
+            case 'copy': {
+              const sel = active.selectionStart !== null ? active.value.substring(active.selectionStart!, active.selectionEnd!) : '';
+              if (sel) (window as any).juvkit?.clipboard?.writeText(sel);
+              return;
+            }
+            case 'cut': {
+              const s = active.selectionStart!, e = active.selectionEnd!;
+              const sel = active.value.substring(s, e);
+              if (sel) {
+                (window as any).juvkit?.clipboard?.writeText(sel);
+                active.setRangeText('');
+              }
+              return;
+            }
+            case 'paste': {
+              (window as any).juvkit?.clipboard?.readText()?.then((text: string) => {
+                if (text && document.activeElement === active) {
+                  active.focus();
+                  document.execCommand('insertText', false, text);
+                }
+              });
+              return;
+            }
+            case 'select_all':
+              active.select();
+              return;
           }
         }
       }

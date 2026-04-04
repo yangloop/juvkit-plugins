@@ -1,0 +1,24 @@
+{
+  "id": "hash-tool",
+  "name": "Hash 工具",
+  "version": "1.0.0",
+  "description": "哈希计算工具 - 支持 MD5/SHA1/SHA256/SHA512，HMAC 签名，文件哈希",
+  "author": "Juvkit",
+  "keywords": ["hash", "md5", "sha1", "sha256", "sha512", "hmac", "哈希", "加密", "校验", "checksum"],
+  "icon": "lock",
+  "type": "external",
+  "runtime": "prebuilt",
+  "entryPoint": "dist/index.iife.js",
+  "style": "dist/style.css",
+  "window": {
+    "width": 560,
+    "height": 680
+  },
+  "permissions": [
+    "clipboard:read",
+    "clipboard:write",
+    "dialog",
+    "window"
+  ],
+  "permissionLevel": "standard"
+}

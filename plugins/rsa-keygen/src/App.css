@@ -1,61 +1,23 @@
-/* ===== Theme Variables ===== */
-.theme-dark {
-  --bg: #1e1e1e;
-  --bg-card: #2a2a2a;
-  --bg-card-hover: #333333;
-  --bg-input: #3c3c3c;
-  --fg: #e0e0e0;
-  --fg-secondary: #999999;
-  --accent: #007aff;
-  --accent-hover: #0056cc;
-  --border: #3c3c3c;
-  --danger: #ff453a;
-  --success: #34c759;
-  --warning: #ff9f0a;
-  --toolbar-bg: #252525;
-  --code-bg: #1a1a2e;
-  --btn-bg: #3c3c3c;
-  --btn-fg: #cccccc;
-  --btn-hover-bg: #505050;
-}
-
-.theme-light {
-  --bg: #ffffff;
-  --bg-card: #f8f8f8;
-  --bg-card-hover: #f0f0f0;
-  --bg-input: #f0f0f0;
-  --fg: #1e1e1e;
-  --fg-secondary: #666666;
-  --accent: #007aff;
-  --accent-hover: #0056cc;
-  --border: #e0e0e0;
-  --danger: #ff3b30;
-  --success: #34c759;
-  --warning: #ff9f0a;
-  --toolbar-bg: #f5f5f5;
-  --code-bg: #f0f5ff;
-  --btn-bg: #e0e0e0;
-  --btn-fg: #333333;
-  --btn-hover-bg: #d0d0d0;
-}
-
-/* ===== Reset & Base ===== */
+/* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===== Base ===== */
 .rsa-app {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--fg);
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  transition: background var(--duration-slow) var(--ease-out),
+              color var(--duration-slow) var(--ease-out);
 }
 
 /* ===== Toolbar & Tabs ===== */
@@ -63,9 +25,11 @@
   display: flex;
   align-items: center;
   padding: 0;
-  background: var(--toolbar-bg);
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
   flex-shrink: 0;
+  transition: background var(--duration-slow) var(--ease-out),
+              border-color var(--duration-slow) var(--ease-out);
 }
 
 .tab-bar {
@@ -75,112 +39,157 @@
 
 .tab-btn {
   flex: 1;
-  padding: 11px 10px;
+  padding: var(--space-3) var(--space-2);
   border: none;
   background: transparent;
-  color: var(--fg-secondary);
-  font-size: 14px;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all var(--duration-normal) var(--ease-out);
   border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
 }
 
 .tab-btn:hover {
-  color: var(--fg);
+  color: var(--text-primary);
+  background: var(--bg-hover);
 }
 
 .tab-btn.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--accent-blue);
+  background: var(--bg-selected);
+  border-bottom-color: var(--accent-blue);
 }
 
 /* ===== Tab Content ===== */
 .tab-content {
   flex: 1;
   overflow-y: auto;
-  padding: 16px 20px;
+  padding: var(--space-4) var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--space-3);
+  transition: background var(--duration-slow) var(--ease-out);
 }
 
 /* ===== Key Generator ===== */
 .gen-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .form-row {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-1);
 }
 
 .form-row label {
-  font-size: 12px;
-  color: var(--fg-secondary);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
   font-weight: 500;
+  transition: color var(--duration-slow) var(--ease-out);
 }
 
 /* ===== Key Size Selector ===== */
 .key-size-selector {
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .key-size-option {
   flex: 1;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg-input);
-  color: var(--fg);
-  font-size: 14px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all var(--duration-normal) var(--ease-out);
   text-align: center;
+  font-family: var(--font-sans);
 }
 
 .key-size-option:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Security strength colors: 4096 = green, 2048 = yellow/orange */
+.key-size-option[data-size="4096"] {
+  border-color: color-mix(in srgb, var(--accent-green) 30%, var(--border-color));
+}
+
+.key-size-option[data-size="4096"]:hover {
+  border-color: var(--accent-green);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent-green) 15%, transparent);
+}
+
+.key-size-option[data-size="2048"] {
+  border-color: color-mix(in srgb, var(--accent-orange) 30%, var(--border-color));
+}
+
+.key-size-option[data-size="2048"]:hover {
+  border-color: var(--accent-orange);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent-orange) 15%, transparent);
 }
 
 .key-size-option.active {
-  background: var(--accent);
+  background: var(--accent-blue);
   color: #fff;
-  border-color: var(--accent);
+  border-color: var(--accent-blue);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+/* Active state with security strength colors */
+.key-size-option.active[data-size="4096"] {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+}
+
+.key-size-option.active[data-size="2048"] {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
 }
 
 /* ===== Buttons ===== */
 .btn {
-  padding: 8px 18px;
-  border-radius: 8px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
   border: none;
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all var(--duration-normal) var(--ease-out);
+  font-family: var(--font-sans);
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--accent-blue);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: var(--accent-hover);
+  background: color-mix(in srgb, var(--accent-blue) 85%, #000);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
-  background: var(--btn-bg);
-  color: var(--btn-fg);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
 }
 
 .btn-secondary:hover {
-  background: var(--btn-hover-bg);
+  background: var(--bg-selected);
+  color: var(--text-primary);
+  transform: translateY(-1px);
 }
 
 .btn:disabled {
@@ -189,9 +198,41 @@
   pointer-events: none;
 }
 
-.btn-generate:disabled {
+/* ===== Generate Button with Loading Animation ===== */
+.btn-generate {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
   position: relative;
+  overflow: hidden;
+}
+
+.btn-generate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: none;
+}
+
+.btn-generate:hover::before {
+  animation: shimmer var(--duration-slow) var(--ease-out);
+}
+
+.btn-generate:disabled {
   color: transparent;
+}
+
+.btn-generate:disabled::before {
+  animation: loading-slide 1.5s ease-in-out infinite;
 }
 
 .btn-generate:disabled::after {
@@ -202,24 +243,35 @@
   align-items: center;
   justify-content: center;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
+  font-family: var(--font-sans);
 }
 
-.btn-generate {
-  width: 100%;
-  padding: 10px;
-  font-size: 15px;
+@keyframes loading-slide {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
-/* ===== Key Display ===== */
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ===== Key Display (code-style) ===== */
 .key-display {
-  background: var(--bg-card);
-  border-radius: 10px;
-  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--duration-slow) var(--ease-out);
+}
+
+.key-display:hover {
+  box-shadow: var(--shadow-sm);
 }
 
 .key-display-header {
@@ -231,58 +283,63 @@
 .key-label {
   font-size: 13px;
   font-weight: 600;
-  color: var(--fg);
+  color: var(--text-primary);
+  transition: color var(--duration-slow) var(--ease-out);
 }
 
 .key-actions {
   display: flex;
-  gap: 4px;
+  gap: var(--space-1);
 }
 
 .action-btn {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   border: none;
   background: transparent;
-  color: var(--fg-secondary);
-  font-size: 14px;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s;
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
 .action-btn:hover {
-  background: var(--btn-bg);
-  color: var(--fg);
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  transform: translateY(-1px);
 }
 
+/* ===== Key Textarea (monospace + code-style background) ===== */
 .key-textarea {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--code-bg);
-  color: var(--fg);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-size: 11px;
-  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
-  line-height: 1.5;
+  font-family: var(--font-mono);
+  line-height: 1.6;
   outline: none;
   resize: none;
   word-break: break-all;
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
 .key-textarea:focus {
-  border-color: var(--accent);
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-blue) 15%, transparent);
 }
 
 /* ===== Generate Footer ===== */
 .gen-results {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .gen-footer {
@@ -292,71 +349,80 @@
 }
 
 .gen-info {
-  font-size: 12px;
-  color: var(--fg-secondary);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  transition: color var(--duration-slow) var(--ease-out);
 }
 
 .gen-warning {
-  font-size: 12px;
-  color: var(--warning);
+  font-size: var(--text-xs);
+  color: var(--accent-orange);
   text-align: center;
-  padding: 6px 10px;
-  background: rgba(255, 159, 10, 0.1);
-  border-radius: 6px;
+  padding: var(--space-2) var(--space-3);
+  background: color-mix(in srgb, var(--accent-orange) 10%, var(--bg-primary));
+  border: 1px solid color-mix(in srgb, var(--accent-orange) 20%, var(--border-subtle));
+  border-radius: var(--radius-md);
+  transition: all var(--duration-slow) var(--ease-out);
 }
 
 /* ===== Form Messages ===== */
 .form-error {
-  color: var(--danger);
-  font-size: 12px;
-  padding: 6px 10px;
-  background: rgba(255, 69, 58, 0.1);
-  border-radius: 6px;
+  color: var(--accent-red);
+  font-size: var(--text-xs);
+  padding: var(--space-2) var(--space-3);
+  background: color-mix(in srgb, var(--accent-red) 10%, var(--bg-primary));
+  border: 1px solid color-mix(in srgb, var(--accent-red) 20%, var(--border-subtle));
+  border-radius: var(--radius-md);
 }
 
 .form-success {
-  color: var(--success);
-  font-size: 12px;
-  padding: 6px 10px;
-  background: rgba(52, 199, 89, 0.1);
-  border-radius: 6px;
+  color: var(--accent-green);
+  font-size: var(--text-xs);
+  padding: var(--space-2) var(--space-3);
+  background: color-mix(in srgb, var(--accent-green) 10%, var(--bg-primary));
+  border: 1px solid color-mix(in srgb, var(--accent-green) 20%, var(--border-subtle));
+  border-radius: var(--radius-md);
 }
 
 /* ===== Crypto Panel ===== */
 .crypto-panel {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .key-source-bar {
   display: flex;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
 .key-source-btn {
   flex: 1;
-  padding: 7px 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg-input);
-  color: var(--fg-secondary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all var(--duration-normal) var(--ease-out);
   text-align: center;
+  font-family: var(--font-sans);
 }
 
 .key-source-btn:hover:not(:disabled) {
-  border-color: var(--accent);
-  color: var(--fg);
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .key-source-btn.active {
-  background: var(--accent);
+  background: var(--accent-blue);
   color: #fff;
-  border-color: var(--accent);
+  border-color: var(--accent-blue);
+  box-shadow: var(--shadow-sm);
 }
 
 .key-source-btn:disabled {
@@ -366,59 +432,66 @@
 
 .crypto-empty {
   text-align: center;
-  color: var(--fg-secondary);
-  padding: 40px 16px;
-  font-size: 14px;
+  color: var(--text-tertiary);
+  padding: var(--space-5) var(--space-4);
+  font-size: var(--text-sm);
 }
 
 .key-info-badge {
-  font-size: 12px;
-  color: var(--accent);
-  background: rgba(0, 122, 255, 0.1);
-  padding: 4px 10px;
-  border-radius: 6px;
+  font-size: var(--text-xs);
+  color: var(--accent-blue);
+  background: color-mix(in srgb, var(--accent-blue) 12%, var(--bg-hover));
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
   display: inline-block;
   align-self: flex-start;
+  transition: all var(--duration-slow) var(--ease-out);
 }
 
+/* ===== Crypto Textareas ===== */
 .crypto-textarea {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg-input);
-  color: var(--fg);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-hover);
+  color: var(--text-primary);
   font-size: 13px;
-  font-family: 'SF Mono', 'Menlo', monospace;
+  font-family: var(--font-mono);
   outline: none;
   resize: vertical;
-  transition: border-color 0.2s;
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
 .crypto-textarea:focus {
-  border-color: var(--accent);
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-blue) 15%, transparent);
 }
 
+/* Result area: distinct background to separate input from output */
 .crypto-textarea.result {
-  background: var(--code-bg);
+  background: var(--bg-primary);
+  border-color: var(--border-color);
   font-size: 11px;
+  box-shadow: var(--shadow-sm);
 }
 
 .char-counter {
   font-size: 11px;
-  color: var(--fg-secondary);
+  color: var(--text-tertiary);
   text-align: right;
+  transition: color var(--duration-normal) var(--ease-out);
 }
 
 .char-counter.over {
-  color: var(--danger);
+  color: var(--accent-red);
   font-weight: 600;
 }
 
 .crypto-result {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
 .crypto-result-header {
@@ -428,9 +501,10 @@
 }
 
 .crypto-result-header label {
-  font-size: 12px;
-  color: var(--fg-secondary);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
   font-weight: 500;
+  transition: color var(--duration-slow) var(--ease-out);
 }
 
 /* ===== Scrollbar ===== */
@@ -443,10 +517,11 @@
 }
 
 .tab-content::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
+  background: var(--border-color);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-slow) var(--ease-out);
 }
 
 .tab-content::-webkit-scrollbar-thumb:hover {
-  background: var(--fg-secondary);
+  background: var(--text-tertiary);
 }
