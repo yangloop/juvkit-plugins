@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-04-04T06:24:24Z",
+  "updated": "2026-04-04T10:30:47Z",
   "categories": [
     "工具",
     "开发",
@@ -101,6 +101,34 @@
         "clipboard:write"
       ],
       "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/diff-tool.zip",
+      "repository": "https://github.com/yangloop/juvkit-plugins"
+    },
+    {
+      "id": "http-client",
+      "name": "HTTP 客户端",
+      "version": "1.0.0",
+      "description": "Postman 风格 HTTP 客户端 - 支持多种请求类型、参数编辑、响应查看",
+      "author": "Juvkit",
+      "keywords": [
+        "http",
+        "api",
+        "postman",
+        "客户端",
+        "请求",
+        "接口",
+        "rest",
+        "client",
+        "request"
+      ],
+      "icon": "globe",
+      "category": "开发",
+      "permissions": [
+        "http:fetch",
+        "storage",
+        "window",
+        "clipboard:write"
+      ],
+      "downloadUrl": "https://raw.githubusercontent.com/yangloop/juvkit-plugins/main/releases/http-client.zip",
       "repository": "https://github.com/yangloop/juvkit-plugins"
     }
   ]
